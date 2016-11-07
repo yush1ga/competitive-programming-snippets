@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>matrix</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//行列演算
+typedef vector&lt;int&gt; vec;
+typedef vector&lt;vec &gt; mat;
+
+class matrix{
+public:
+    mat dat;
+    int height, width;
+    void init(int n, int m);
+    matrix mul(matrix b);
+};
+//初期化
+void matrix::init(int n, int m){
+    height=n;
+    width=m;
+    dat.resize(n, vec(m,0));
+}
+//掛け算
+matrix matrix::mul(matrix b){
+    matrix res;
+    res.init(height, b.width);
+    for(int i=0; i&lt;height; i++){
+        for(int j=0; j&lt;b.width; j++){
+            for(int k=0; k&lt;width; k++){
+                res.dat[i][j]+=dat[i][k]*b.dat[k][j];
+                res.dat[i][j]%=10007;
+            }
+        }
+    }
+    return res;
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>02F79B11-20F7-4C1B-99A2-340B6A7D94EE</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>行列</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

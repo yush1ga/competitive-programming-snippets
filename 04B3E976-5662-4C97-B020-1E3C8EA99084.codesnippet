@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>maxflow</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define MAX_V 110
+//辺を表す構造体 (行き先, 容量, 逆辺)
+struct edge{int to, cap, rev;};
+vector&lt;int&gt; e[MAX_V];
+vector&lt;vector&lt;edge&gt; &gt; G(MAX_V);
+int level[MAX_V];
+int iter[MAX_V];
+int A[MAX_V];
+
+void addEdge(int from, int to, int cap){
+    G[from].push_back(edge{to, cap, int(G[to].size())});
+    G[to].push_back(edge{from, 0, int(G[from].size()-1)});
+}
+
+void bfs(int s){
+    fill(level,level+MAX_V,-1);
+    queue&lt;int&gt; que;
+    que.push(s);
+    level[s]=0;
+    while(!que.empty()){
+        int from = que.front(); que.pop();
+        for(auto to: G[from]){
+            edge &amp;e = to;
+            if(e.cap &gt; 0 &amp;&amp; level[e.to] &lt; 0) {
+                level[e.to]=level[from]+1;
+                que.push(e.to);
+            }
+        }
+    }
+}
+
+int dfs(int v, int t, int f){
+    if(v==t) return f;
+    FOR(i, iter[v],G[v].size()){
+        edge &amp;e = G[v][i];
+        if(e.cap &gt; 0 &amp;&amp; level[v] &lt; level[e.to]){
+            int d = dfs(e.to, t , min(f, e.cap));
+            if(d&gt;0){
+                e.cap -= d;
+                G[e.to][e.rev].cap += d;
+                return d;
+            }
+        }
+    }
+    
+    return 0;
+}
+
+int maxFlow(int s, int t) {
+    int flow = 0;
+    while (true) {
+        bfs(s);
+        if (level[t] &lt; 0 ) return flow;
+        fill(iter,iter+MAX_V,0);
+        int f;
+        while ((f = dfs(s, t, INF)) &gt; 0) flow += f;
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>04B3E976-5662-4C97-B020-1E3C8EA99084</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>最大流・最小カット</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

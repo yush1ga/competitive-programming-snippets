@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>bitree</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//[1,n]
+int n=MAX_N;
+int bit[MAX_N+1];
+
+int sum(int i){
+    int s=0;
+    while(i&gt;0){
+        s+=bit[i];
+        i-=i&amp;-i;
+    }
+    return s;
+}
+
+void add(int i, int x){
+    while(i&lt;=n){
+        bit[i]+=x;
+        i += i &amp; -i;
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3DA71243-7D57-412B-9B41-0DCA9C47868F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Binary Indexed Tree</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

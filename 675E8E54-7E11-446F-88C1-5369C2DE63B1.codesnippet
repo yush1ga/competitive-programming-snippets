@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lca</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// LCA
+#define MAX_V 100100
+#define MAX_LOG_V 32
+vector&lt;int&gt; G[MAX_V];
+int root;
+int parent[MAX_LOG_V][MAX_V]; //親を2^k回たどって到達する頂点(値を通り過ぎると場合は-1とする)
+int depth[MAX_V]; //根からの深さ
+void dfs(int v, int p, int d){
+    parent[0][v]=p;
+    depth[v]=d;
+    for(auto x: G[v]){
+        if(x!=p) dfs(x,v,d+1);
+    }
+}
+
+//初期化
+void init(int V){
+    //parent[0]とdepthを初期化
+    dfs(root,-1,0);
+    //parentを初期化
+    REP(k,MAX_LOG_V-1){
+        REP(v,V){
+            if(parent[k][v]&lt;0) parent[k+1][v]=-1;
+            else parent[k+1][v]=parent[k][parent[k][v]];
+        }
+    }
+}
+
+// uとvのLCAを求める
+int lca(int u, int v){
+    // uとvの高さが同じになるまでおやを辿る
+    if(depth[u] &gt; depth[v]) swap(u,v);
+    REP(k,MAX_LOG_V){
+        if((depth[v]-depth[u])&gt;&gt;k&amp;1){
+            v=parent[k][v];
+        }
+    }
+    if(u==v) return u;
+    //二分撫索でLCAを求める
+    for(int k = MAX_LOG_V-1; k &gt;= 0; k--){
+        if (parent[k][u] != parent[k][v]){
+            u=parent[k][u];
+            v=parent[k][v];
+        }
+    }
+    return parent[0][u];
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>675E8E54-7E11-446F-88C1-5369C2DE63B1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>LCA</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

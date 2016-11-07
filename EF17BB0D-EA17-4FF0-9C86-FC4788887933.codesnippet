@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ruisekiwa</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>int D[60][60];
+int D_sum[60][60];
+int H,W;
+void makeCumulativeSum(){
+    REP(i,H)REP(j,W){
+        if(i!=0 &amp;&amp; j!=0)
+            D_sum[i][j] = D[i][j] + D_sum[i][j-1] + D_sum[i-1][j] - D_sum[i-1][j-1];
+        else if(i!=0 &amp;&amp; j==0)
+            D_sum[i][j] = D[i][j]+D_sum[i-1][j];
+        else if(i==0 &amp;&amp; j!=0)
+            D_sum[i][j] = D[i][j]+D_sum[i][j-1];
+        else
+            D_sum[i][j] = D[i][j];
+    }
+}
+
+int getSum(int i, int j, int k, int l){
+    if(i!=0 &amp;&amp; j!=0)
+        return D_sum[k][l] - D_sum[i-1][l] - D_sum[k][j-1] + D_sum[i-1][j-1];
+    else if(i!=0 &amp;&amp; j==0)
+        return D_sum[k][l] - D_sum[i-1][l];
+    else if(i==0 &amp;&amp; j!=0)
+        return D_sum[k][l] - D_sum[k][j-1];
+    else
+        return D_sum[k][l];
+    return -INF;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EF17BB0D-EA17-4FF0-9C86-FC4788887933</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>二次元累積和</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

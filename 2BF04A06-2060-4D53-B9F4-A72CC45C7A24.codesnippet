@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>rminq</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class rminq{
+public:
+    int n;
+    vector&lt;int&gt; dat;
+    rminq(int n_);
+    void update(int k, int a);
+    int query(int a, int b, int k, int l, int r);
+    int query(int a, int b);
+};
+rminq::rminq(int n_){
+    n=1;
+    while (n &lt; n_) n*= 2;
+    dat.resize(2*n-1,INF); //最大値INFの時
+}
+void rminq::update(int k, int a){
+    k += n-1;
+    dat[k] = a;
+    while(k&gt;0){
+        k = (k-1) / 2;
+        dat[k] = min(dat[k*2+1],dat[k*2+2]);
+    }
+}
+int rminq::query(int a, int b, int k, int l, int r){
+    if(r&lt;=a || b&lt;=l) return INF; //最大値INFの時
+    if(a&lt;=l &amp;&amp; r&lt;=b) return dat[k];
+    int vl = query(a,b,k*2+1,l,(l+r)/2);
+    int vr = query(a,b,k*2+2,(l+r)/2,r);
+    return min(vl,vr);
+}
+int rminq::query(int a, int b){
+    return query(a,b,0,0,n);
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2BF04A06-2060-4D53-B9F4-A72CC45C7A24</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Range Minimum Query</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

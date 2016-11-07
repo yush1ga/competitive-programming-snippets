@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ctemplate</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define REP(i,n) for(ll i=0; i&lt;(ll)(n); i++)
+#define FOR(i,n,m) for (ll i=n; i&lt;(ll)(m); i++)
+#define pb push_back
+#define INF 1000000007LL
+#define all(a) (a).begin(),(a).end()
+
+typedef long long ll;
+typedef pair&lt;int,int&gt; p;
+
+int dy[4]={-1,1,0,0};
+int dx[4]={0,0,1,-1};
+
+int main(){
+    ios::sync_with_stdio(false);
+    
+    return 0;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>ACEE1A23-43C8-4110-A68E-588A8FE70B69</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>競技プログラミングのテンプレート</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Competitive Programming Template</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
