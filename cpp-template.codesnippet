@@ -17,6 +17,8 @@ using namespace std;
 #define pb push_back
 #define INF 1000000007LL
 #define all(a) (a).begin(),(a).end()
+#define chmin(a,b) a=min(a,b)
+#define chmax(a,b) a=max(a,b)
 
 typedef long long ll;
 typedef pair&lt;int,int&gt; p;

@@ -9,16 +9,14 @@
 		<string>TopLevel</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>ll mod_pow(ll n, ll m){
-    if (m==0) return 1;
-    if (m==1) return n;
-    ll tmp = mod_pow(n,m/2);
-    tmp*=tmp;
-    tmp%=&lt;#modulo#&gt;;
-    if (m%2==0) return tmp;
-    tmp*=n;
-    tmp%=&lt;#modulo#&gt;;
-    return tmp;
+	<string>ll mod_pow(ll x, ll n) {
+    ll a = 1;
+    while (n) {
+        if (n%2) a = a*x%INF;
+        x = x*x%INF;
+        n/=2;
+    }
+    return a;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>CAAA65E9-F9B8-4AD6-B54A-EFCA6E5AF08C</string>
