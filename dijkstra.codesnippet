@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>dijkstra</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define MAX_V 100010
+struct edge {int to, cost;};
+int V;
+vector&lt;edge&gt; G[MAX_V];
+int d[MAX_V];
+
+void dijkstra(int s){
+    priority_queue&lt;p,vector&lt;p&gt;, greater&lt;p&gt; &gt; que;
+    fill(d,d+V, INF);
+    d[s]=0;
+    que.push(p(0,s));
+    while(!que.empty()){
+        p pi = que.top(); que.pop();
+        int v = pi.second;
+        if(d[v] &lt; pi.first) continue;
+        REP(i,G[v].size()){
+            edge e = G[v][i];
+            if(d[e.to] &gt; d[v] + e.cost){
+                d[e.to] = d[v] + e.cost;
+                que.push(p(d[e.to],e.to));
+            }
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1C7348CC-4EEC-424E-8B65-D9D8FAB3C5BD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ダイクストラ</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

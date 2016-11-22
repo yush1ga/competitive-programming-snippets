@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>paiza</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;deque&gt;
+#include &lt;stack&gt;
+#include &lt;bitset&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+#include &lt;numeric&gt;
+#include &lt;utility&gt;
+#include &lt;sstream&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cctype&gt;
+#include &lt;string&gt;
+#include &lt;cstring&gt;
+#include &lt;ctime&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+#define REP(i,n) for(ll i=0; i&lt;(ll)(n); i++)
+#define FOR(i,n,m) for (ll i=n; i&lt;(ll)(m); i++)
+#define pb push_back
+#define INF 1000000007LL
+#define all(a) (a).begin(),(a).end()
+
+typedef long long ll;
+typedef pair&lt;int,int&gt; p;
+
+int dy[4]={-1,1,0,0};
+int dx[4]={0,0,1,-1};
+
+int main(){
+    ios::sync_with_stdio(false);
+    return 0;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>94018546-C496-4FEF-B3FF-3E34799BBE58</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>paiza</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
