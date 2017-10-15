@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>kruskal</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define MAX_E 10000
+edge es[MAX_E];
+int V, E;
+
+int kruskal() {
+    sort(es, es + E, comp);
+    UnionFind uf(V+1);
+    int res = 0;
+    REP(i,E) {
+        edge e = es[i];
+        if (!uf.same(e.u, e.v)) {
+            uf.unite(e.u, e.v);
+            res += e.cost;
+        }
+    }
+    return res;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>842C16B6-3643-4621-BF8D-B8A3A81C743C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>クラスカル法</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
