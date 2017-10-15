@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lowlink</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define MAX_V 10000
+vector&lt;int&gt; G[MAX_V];
+vector&lt;pair&lt;int, int&gt; &gt; bridge;
+vector&lt;int&gt; articulation;
+int order[MAX_V], lowlink[MAX_V];
+bool visited[MAX_V];
+int V, E;
+
+void dfs(int v, int pre, int &amp;k)
+{
+    visited[v] = true;
+    order[v] = k++;
+    lowlink[v] = order[v];
+    
+    bool isArticulation = false;
+    int cnt = 0;
+    
+    for (auto next_node: G[v]){
+        // 未踏の場合
+        if (!visited[next_node]){
+            cnt++;
+            dfs(next_node, v, k);
+            lowlink[v] = min(lowlink[v], lowlink[next_node]);
+            if (pre != -1 &amp;&amp; order[v] &lt;= lowlink[next_node]) isArticulation = true;
+            if (order[v] &lt; lowlink[next_node]) bridge.pb(make_pair(min(v, next_node), max(v, next_node)));
+        }
+        // 再訪 (後退辺) の場合
+        else if (next_node != pre){
+            lowlink[v] = min(lowlink[v], order[next_node]);
+        }
+    }
+    
+    if (pre == -1 &amp;&amp; cnt &gt; 1) isArticulation = true;
+    if (isArticulation) articulation.pb(v);
+}
+
+void detectBridgesAndArticulations() {
+    int k = 0;
+    for (int i = 0; i &lt; V; i++){
+        if (!visited[i]) dfs(i, -1, k);
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C6815436-A577-4530-B104-90B4D5E418A4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>lowlink</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
